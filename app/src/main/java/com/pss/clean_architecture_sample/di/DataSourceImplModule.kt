@@ -1,8 +1,8 @@
 package com.pss.clean_architecture_sample.di
 
-import com.pss.data.remote.api.SampleApi
-import com.pss.data.repository.remote.datasource.MainDataSource
-import com.pss.data.repository.remote.datasourceImpl.MainDataSourceImpl
+import com.pss.data.remote.api.GithubApi
+import com.pss.data.repository.remote.datasource.GithubDataSource
+import com.pss.data.repository.remote.datasourceImpl.GithubDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,10 +16,10 @@ class DataSourceImplModule {
     @Provides
     @Singleton
     fun provideMainDataSource(
-        sampleApi: SampleApi
-    ) : MainDataSource {
-        return MainDataSourceImpl(
-            sampleApi
+        githubApi: GithubApi
+    ) : GithubDataSource {
+        return GithubDataSourceImpl(
+            githubApi
         )
     }
 }

@@ -1,7 +1,7 @@
 package com.pss.clean_architecture_sample.di
 
-import com.pss.data.remote.api.SampleApi
 import com.pss.clean_architecture_sample.widget.utils.Utils.BASE_URL
+import com.pss.data.remote.api.GithubApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,7 +37,6 @@ object NetworkModule {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
-            //json 변화기 Factory
             .client(provideHttpClient())
             .addConverterFactory(gsonConverterFactory)
             .build()
@@ -51,8 +50,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideSampleApiService(retrofit: Retrofit): SampleApi {
-        return retrofit.create(SampleApi::class.java)
+    fun provideGithubApiService(retrofit: Retrofit): GithubApi {
+        return retrofit.create(GithubApi::class.java)
     }
 
 
